@@ -1,9 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
+import { COLORS, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import Spacer from "../Spacer";
 
 const Header = () => {
   // Our site features two visual headers, but they should be
@@ -12,7 +13,9 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Logo />
+        <Size>
+          <Logo />
+        </Size>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -21,17 +24,28 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        <Size />
       </MainHeader>
     </header>
   );
 };
 
 const MainHeader = styled.div`
-  padding: 0 32px;
+  display: flex;
+  align-items: baseline;
+  padding: 18px 32px;
+  height: 4.5rem;
   border-bottom: 1px solid ${COLORS.gray[300]};
 `;
 
-const Nav = styled.nav``;
+const Nav = styled.nav`
+  display: flex;
+  gap: 48px;
+  margin: 0px 48px;
+`;
+const Size = styled.div`
+  flex: 1;
+`;
 
 const NavLink = styled.a`
   font-size: 1.125rem;
@@ -44,5 +58,9 @@ const NavLink = styled.a`
     color: ${COLORS.secondary};
   }
 `;
+
+// const Spacer = styled.div`
+//   flex-basis: 370px;
+// `;
 
 export default Header;
